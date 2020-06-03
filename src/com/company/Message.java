@@ -1,9 +1,9 @@
 package com.company;
 import java.util.Random;
 public class Message {
-    int [] d;
-    int fcs;
+    int[] d;
     public Message(int k){
+        d=new int[k];
         create(k);
     }
     int[] getD(){
@@ -14,6 +14,8 @@ public class Message {
         Random rand = new Random();
         for(int i=0;i<k;i++){
             d[i]=rand.nextInt(2);
+            System.out.println(d[i]);
         }
+
     }
 }

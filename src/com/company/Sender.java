@@ -14,12 +14,15 @@ public class Sender {
     public Sender(){
         System.out.println("Type the number of messages:");
         a = scan.nextInt();
-        System.out.println("Type the number of each message's length");
+        System.out.println("Type the number of each message's length:");
         k = scan.nextInt();
+        data=new int[a][k];
         dataFiller(a,k);
-        System.out.println("Type the length of the divider used for error check (WARNING:length must be shorter than the given message length.):");
+        System.out.println("Type the length of the divider used for error check:");
         pl=scan.nextInt();
+        p=new int[pl];
         dividerScan(pl);
+        datafcs=new int[a][k+pl-1];
         for (int i=0;i<a;i++){
             CRC x = new CRC(data[i],p);
             datafcs[i]=x.getDataFcs();
