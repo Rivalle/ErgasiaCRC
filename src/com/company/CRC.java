@@ -19,13 +19,13 @@ public class CRC {
         int[] datad=new int[data.length];
         int pl=p.length;
         int[] rem=new int[pl];
-        System.arraycopy(data,0,datad,0,pl);
+        System.arraycopy(data,0,datad,0,data.length);
         for (int i=0;i<pl-1;i++){
             datad=addX(datad.length,datad,0);
         }
         System.arraycopy(datad,0,rem,0,pl);
         int pick=pl;
-        while (pick<=datad.length){
+        while (pick<datad.length){
             for(int i=0;i<pl;i++){
                 rem[i]=exor(p[i],rem[i]);
             }
@@ -37,7 +37,10 @@ public class CRC {
                 rem[pl-1]=datad[pick-1];
             }
         }
-        int fcs[]=new int[pl-1];
+        for(int i=0;i<rem.length;i++){
+            System.out.println(rem[i]);
+        }
+        int[] fcs=new int[pl-1];
         for (int i=0;i<fcs.length;i++){
             fcs[i]=rem[i+1];
         }
